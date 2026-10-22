@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar } from './components/Navbar';
+import { AppSidebar2 } from './components/AppSidebar2';
 import { OverviewPage } from './pages/OverviewPage';
 import { ConsentPage } from './pages/ConsentPage';
 import { DataSimulatorPage } from './pages/DataSimulatorPage';
 import { NoticePage } from './pages/NoticePage';
 import { AuditPage } from './pages/AuditPage';
+import { Footer8 } from './components/Footer8';
+import { ChevronRight } from 'lucide-react';
+
 
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -29,44 +32,61 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100 text-slate-800">
-      <Navbar
+    <div className="min-h-screen bg-[#0b0d13] text-slate-100 flex flex-col lg:flex-row antialiased selection:bg-amber-500/30 selection:text-amber-200">
+      {/* App Sidebar 2: Icon Rail with Hover Flyouts */}
+      <AppSidebar2
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         systemHealthy={systemHealthy}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {activeTab === 'overview' && <OverviewPage onNavigate={setActiveTab} />}
-        {activeTab === 'consent' && <ConsentPage />}
-        {activeTab === 'simulator' && <DataSimulatorPage />}
-        {activeTab === 'notices' && <NoticePage />}
-        {activeTab === 'audit' && <AuditPage />}
-      </main>
 
-      <footer className="bg-slate-900 border-t border-slate-800 text-slate-400 py-6 text-xs mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="font-semibold text-slate-300">
-              FitTrack Lite • Purpose-Based Consent Recording &amp; Withdrawal System
-            </p>
-            <p className="text-slate-500 mt-0.5">
-              AIORI-3 Problem Statement A3-PS002-TC320 • Developed strictly per submission specifications
-            </p>
+      {/* Main Content Workspace */}
+      <div className="flex-1 flex flex-col min-w-0 bg-[#0b0d13] overflow-x-hidden">
+        {/* Top Command Platform Header Bar */}
+        <header className="h-14 px-4 sm:px-6 lg:px-8 border-b border-white/[0.06] bg-[#0c0e16]/90 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
+            <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+              <span className="hidden sm:inline">Platform</span>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600 hidden sm:inline" />
+              <span className="text-slate-300 font-semibold truncate">FitTrack Consent</span>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+              <span className="text-amber-400 font-bold truncate">
+                {activeTab === 'overview' && 'Overview & Telemetry'}
+                {activeTab === 'consent' && 'Consent Registry'}
+                {activeTab === 'simulator' && 'Data Simulator'}
+                {activeTab === 'notices' && 'Notice Management'}
+                {activeTab === 'audit' && 'Audit Evidence Trail'}
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-4 text-slate-400">
-            <span>India DPDP Act 2023</span>
-            <span>•</span>
-            <span>GDPR Arts. 6-7</span>
-            <span>•</span>
-            <span>Kantara Consent Receipts</span>
-            <span>•</span>
-            <span>RFC 8785 SHA-256 Chain</span>
+
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[11px] font-mono text-slate-300">
+              DPDP 2023 • GDPR Arts. 6-7
+            </span>
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#161a25] border border-white/[0.06] text-[11px]">
+              <span className={`w-2 h-2 rounded-full ${systemHealthy ? 'bg-emerald-400 animate-pulse' : 'bg-rose-500'}`} />
+              <span className="text-slate-300 font-semibold font-mono">{systemHealthy ? 'FastAPI Active' : 'API Offline'}</span>
+            </div>
           </div>
-        </div>
-      </footer>
+        </header>
+
+        {/* Dynamic Page Workspace */}
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+          {activeTab === 'overview' && <OverviewPage onNavigate={setActiveTab} />}
+          {activeTab === 'consent' && <ConsentPage />}
+          {activeTab === 'simulator' && <DataSimulatorPage />}
+          {activeTab === 'notices' && <NoticePage />}
+          {activeTab === 'audit' && <AuditPage />}
+        </main>
+
+        {/* Footer 8: Centered Footer with Social & Platform Action Icons */}
+        <Footer8 onNavigate={setActiveTab} />
+      </div>
     </div>
   );
 };
 
 export default App;
+

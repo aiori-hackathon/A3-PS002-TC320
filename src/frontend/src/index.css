@@ -4,10 +4,100 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-800 selection:bg-brand-500 selection:text-white font-sans;
+    background-color: #0b0d13;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background-color: rgba(249, 115, 22, 0.3);
+    color: #fed7aa;
   }
 }
 
+
 .code-font {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1017;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252c3d;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #343d54;
+}
+
+/* Glass & Card styles */
+.dark-panel {
+  background-color: #131722;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark-panel-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark-panel-hover:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.7);
+}
+
+/* Senior UI/UX Card Interactive Hover Effects */
+.card-interactive {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card-interactive:hover {
+  transform: translateY(-2.5px);
+  border-color: rgba(245, 158, 11, 0.32);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(245, 158, 11, 0.14);
+}
+
+.card-interactive-emerald {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card-interactive-emerald:hover {
+  transform: translateY(-2.5px);
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(16, 185, 129, 0.14);
+}
+
+.card-interactive-rose {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card-interactive-rose:hover {
+  transform: translateY(-2.5px);
+  border-color: rgba(244, 63, 94, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(244, 63, 94, 0.14);
+}
+
+.card-interactive-indigo {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card-interactive-indigo:hover {
+  transform: translateY(-2.5px);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(99, 102, 241, 0.14);
+}
+
