@@ -3,6 +3,7 @@
 > **AIORI-3 Hackathon Submission**  
 > Problem Statement: **A3-PS002-TC320**  
 > Team Introduction Video: [YouTube](https://youtu.be/sMHmEqIcPks)
+> Demonstration Video: [YouTube](https://youtu.be/c3JlPYbr-98)
 
 ---
 
